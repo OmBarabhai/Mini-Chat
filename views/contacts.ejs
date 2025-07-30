@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Contacts</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .contact-list {
+      margin-top: 20px;
+    }
+    .contact {
+      background: #fff;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-chat {
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <h2>Your Contacts</h2>
+  
+  <form method="POST" action="/contacts">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="tel" name="phone" placeholder="Phone" required>
+    <button type="submit">Add Contact</button>
+  </form>
+  
+  <div class="contact-list">
+    <% contacts.forEach(contact => { %>
+      <div class="contact">
+        <div>
+          <strong><%= contact.name %></strong><br/>
+          <small><%= contact.phone %></small>
+        </div>
+        <a class="btn-chat" href="/chats/new?to=<%= encodeURIComponent(contact.phone) %>">Chat</a>
+      </div>
+    <% }); %>
+  </div>
+
+  <br/>
+  <a href="/chats">← Back to Chats</a>
+</body>
+</html>

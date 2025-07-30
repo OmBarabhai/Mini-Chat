@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Whatsapp</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <h3>All Chats</h3>
+
+    <form method="GET" action="/chats/new">
+      <button>New Chat</button>
+    </form>
+
+    <% if (chats.length === 0) { %>
+      <p>No chats yet.</p>
+    <% } %>
+
+    <div class="chat-list">
+      <% for (let chat of chats) { %>
+        <div class="chat">
+          <p><strong>From:</strong> <%= chat.from %></p>
+          <div class="msg">
+            <p><%= chat.msg %></p>
+
+            <form method="GET" action="/chats/<%= chat._id %>/edit">
+              <button>Edit</button>
+            </form>
+
+            <form method="POST" action="/chats/<%= chat._id %>?_method=DELETE">
+              <button>Delete</button>
+            </form>
+          </div>
+          <p><strong>To:</strong> <%= chat.to %></p>
+          <hr />
+          <p><%= new Date(chat.created_at).toLocaleTimeString() %></p>
+          <p><%= new Date(chat.created_at).toLocaleDateString() %></p>
+        </div>
+      <% } %>
+    </div>
+
+    <!-- Real-time functionality (optional, only works if you set up socket.io) -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+
+      socket.on("new message", (msg) => {
+        const chatList = document.querySelector(".chat-list");
+        const newChat = document.createElement("div");
+        newChat.className = "chat";
+        newChat.innerHTML = `
+          <p><strong>From:</strong> ${msg.from}</p>
+          <div class="msg">
+            <p>${msg.msg}</p>
+          </div>
+          <p><strong>To:</strong> ${msg.to}</p>
+          <p>${new Date(msg.created_at).toLocaleTimeString()}</p>
+          <p>${new Date(msg.created_at).toLocaleDateString()}</p>
+        `;
+        chatList.prepend(newChat);
+      });
+
+      // Note: Form and inputs for socket-based sending are not present in this page
+    </script>
+  </body>
+</html>

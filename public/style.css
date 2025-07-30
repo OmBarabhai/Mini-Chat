@@ -1,0 +1,134 @@
+/* Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  background: #ece5dd;
+  padding: 20px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Chat List Container */
+.chat-list {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Chat Card */
+.chat {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  padding: 16px 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.chat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat Header */
+.chat .header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #075E54;
+  margin-bottom: 10px;
+}
+
+/* Message Bubble */
+.msg {
+  background: #dcf8c6;
+  padding: 12px 16px;
+  border-radius: 10px;
+  position: relative;
+  animation: slideIn 0.4s ease-out;
+  font-size: 0.95rem;
+  margin: 8px 0;
+}
+
+/* Timestamp */
+.chat .timestamp {
+  font-size: 0.75rem;
+  color: #777;
+  position: absolute;
+  top: 12px;
+  right: 20px;
+}
+
+/* Buttons */
+button {
+  background-color: #25d366;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 6px;
+}
+
+button:hover {
+  background-color: #20ba58;
+}
+
+/* Forms */
+form {
+  margin: 12px 0;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  transition: border 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #25d366;
+  background-color: #fff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
