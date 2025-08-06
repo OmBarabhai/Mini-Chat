@@ -9,10 +9,7 @@ A minimal chat and contact manager built with **Node.js**, **Express**, **MongoD
 - 📩 Send and receive messages between users
 - 📖 View all chat messages in chronological order
 - 📝 Edit or delete messages
-- 📇 Add and view contacts
-- 🧪 Mock authentication for testing
-- 📷 Includes homepage screenshot
-
+- 
 ---
 
 ## 🛠️ Tech Stack
