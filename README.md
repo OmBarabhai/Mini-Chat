@@ -68,8 +68,9 @@ You can update the image URLs if you upload your own screenshots.
 
 
 ```
-Clone the repo
+
 git clone https://github.com/OmBarabhai/minichat.git
+
 cd minichat
 ```
 
@@ -91,6 +92,5 @@ Start the server
 node server.js
 ```
 ```
-
-http://localhost:3000
+http://localhost:8080/chats
 ```
